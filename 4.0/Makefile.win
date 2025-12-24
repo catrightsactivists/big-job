@@ -1,0 +1,43 @@
+# Project: 4.0
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o player_manager.o stats_calculator.o file_ops.o display_manager.o menu_system.o
+LINKOBJ  = main.o player_manager.o stats_calculator.o file_ops.o display_manager.o menu_system.o
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"F:/dev"
+CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"F:/dev"
+BIN      = 4.0.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+player_manager.o: player_manager.c
+	$(CC) -c player_manager.c -o player_manager.o $(CFLAGS)
+
+stats_calculator.o: stats_calculator.c
+	$(CC) -c stats_calculator.c -o stats_calculator.o $(CFLAGS)
+
+file_ops.o: file_ops.c
+	$(CC) -c file_ops.c -o file_ops.o $(CFLAGS)
+
+display_manager.o: display_manager.c
+	$(CC) -c display_manager.c -o display_manager.o $(CFLAGS)
+
+menu_system.o: menu_system.c
+	$(CC) -c menu_system.c -o menu_system.o $(CFLAGS)
